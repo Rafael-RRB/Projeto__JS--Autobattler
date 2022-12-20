@@ -1,0 +1,134 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.header, .footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 7vh;
+    color: white;
+    background-color: black;
+}
+
+.header__attributes, .footer__stats {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 15vw;
+    height: 5vh;
+    padding: 0 .5em;
+    border: .25vw solid gray;
+    border-radius: 10px;
+    color: black;
+    font-size: 1.8rem;
+    background: white url("") no-repeat left center;
+}
+
+    .header__attributes > input, .footer__stats > input {
+        width: 80%;
+        height: 3vh;
+        font-size: 1.8rem;
+        color: black;
+        border: none;
+        background-color: inherit;
+    }
+
+    /* attributes */
+        .attributes--level {
+
+        }
+
+        .attributes--health {
+
+        }
+
+        .attributes--attack {
+
+        }
+
+        .attributes--defence {
+
+        }
+
+        .attributes--agility {
+
+        }
+
+        .attributes--favor {
+
+        }
+    /* */
+
+/* Main */
+.main {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 86vh;
+    color: black;
+    background-color: white;
+}
+
+    .main__levelup {
+        display: none;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 50vh;
+        height: 80vh;
+        position: absolute;
+        background-color: white;
+        padding: 2rem;
+        border: .5rem solid black;
+        border-radius: 2rem;
+    }
+
+        .levelup__title {
+
+        }
+
+        .levelup__button {
+            min-height: 50px;
+            min-width: 50px;
+            width: 15rem;
+            padding: 0 1rem;
+            font-size: 1.4rem;
+            background-color: #fff;
+            border-radius: 1rem;
+            border-width: .5rem;
+            border-color: #ccc;
+        }
+
+    .actor {
+        height: 66vh;
+        width: 44vh;
+        border-radius: 2rem;
+    }
+
+        [data-actor="pc"] {
+            background-color: lightgreen;
+        }
+
+        [data-actor="npc"] {
+            background-color: darkred;
+        }
+
+/* Footer */
+
+/* JavaScript classes */
+
+.js-flex {
+    display: flex;
+}
