@@ -254,7 +254,7 @@ function combat() {
         // Check if Player critical hit is possible
         if(playerActor.curFavor >= 100) {
             console.log("PC Crit");
-            playerActor.curFavor = 0;
+            playerActor.curFavor -= 100;
             enemyActor.curHealth -= causeDamage(1);
         } else {
             enemyActor.curHealth -= causeDamage(0);
@@ -270,7 +270,7 @@ function combat() {
         // Check if Enemy critical hit is possible
         if(enemyActor.curFavor >= 100) {
             console.log("Enemy Critical Hit!");
-            enemyActor.curFavor = 0;
+            enemyActor.curFavor -= 100;
             playerActor.curHealth -= causeDamage(1);
         } else {
             playerActor.curHealth -= causeDamage(0);
@@ -340,4 +340,4 @@ executeTurn();
 /* FPS list
     60 FPS = 16.67ms
 */
-setInterval(executeTurn, 1);
+setInterval(executeTurn, 100);
