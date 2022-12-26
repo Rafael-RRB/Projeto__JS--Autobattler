@@ -1,5 +1,24 @@
+@font-face {
+    font-family: Alagard;
+    src: url(font/alagard.ttf);
+}
+
 * {
+    font-family: Alagard;
     box-sizing: border-box;
+    image-rendering: pixelated;
+  
+}
+
+:root {
+    --border: 16px solid #000;
+    --border-image: url(img/ui__border.png) 16 repeat;
+    
+    /* font sizes:
+        border of 16px: 1.6;
+        border of 32px: 3.2rem;
+        border of 64px: 4.8rem;
+    */
 }
 
 html {
@@ -7,42 +26,62 @@ html {
 }
 
 body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     padding: 0;
     margin: 0;
 }
 
-.header, .footer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    height: 7vh;
-    color: white;
-    background-color: black;
+input:disabled {
+    color: inherit;
+    background-color: inherit;
 }
 
-.header__attributes, .footer__stats {
+.header, .footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 128px;
+    
+    /* Font-size that more closely matches the "aspect ratio" */
+    font-size: 1.6rem;
+    
+    color: white;
+    border: var(--border);
+    border-image: var(--border-image);
+}
+
+.header__attributes, .footer__attributes {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 15vw;
-    height: 5vh;
+    width: 100%;
+    height: 32px;
     padding: 0 .5em;
-    border: .25vw solid gray;
-    border-radius: 10px;
+    border: var(--border);
+    border-image: var(--border-image);
     color: black;
-    font-size: 1.8rem;
     background: white url("") no-repeat left center;
 }
 
-    .header__attributes > input, .footer__stats > input {
-        width: 80%;
-        height: 3vh;
-        font-size: 1.8rem;
-        color: black;
-        border: none;
+    .attributes__text {
+        display: inline-block;
+        width: 30%;
+        font-size: 1.6rem;
+    }
+
+    .attributes__input {
+        width: 100%;
+        font-size: 1.6rem;
+        text-align: center;
+        color: #000;
         background-color: inherit;
+        border: none;
+        padding: 0;
+        margin: 0;
     }
 
     /* attributes */
@@ -66,7 +105,7 @@ body {
 
         }
 
-        .attributes--favor {
+        .attributes--crit {
 
         }
     /* */
@@ -74,56 +113,167 @@ body {
 /* Main */
 .main {
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
-    height: 86vh;
-    color: black;
-    background-color: white;
+
+    min-height: 384px;
+    height: calc(100vh - 256px);
+
+    border: var(--border);
+    border-image: var(--border-image);
 }
+
+    .main__attributes {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+        .attributes__label--main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            width: 80px;
+            height: 96px;
+            border: var(--border);
+            border-image: var(--border-image);
+        }
+
+            .attributes__label--main > .attributes__text {
+                padding: .8rem 0;
+            }
+
+                .attributes--attack {
+                    background: transparent url(img/ui__icon--placeholder.png) no-repeat top center;
+                }
+
+                .attributes--defence {
+                    background: transparent url(img/ui__icon--placeholder.png) no-repeat top center;
+                }
+
+                .attributes--agility {
+                    background: transparent url(img/ui__icon--placeholder.png) no-repeat top center;
+                }
 
     .main__levelup {
         display: none;
         flex-direction: column;
-        justify-content: space-evenly;
+        justify-content: space-between;
         align-items: center;
-        width: 50vh;
-        height: 80vh;
+        width: 100%;
+
+        min-height: 384px;
+        height: calc(100vh - 256px);
+        background-color: #fff;
         position: absolute;
-        background-color: white;
-        padding: 2rem;
-        border: .5rem solid black;
-        border-radius: 2rem;
+        border: var(--border);
+        border-image: var(--border-image);
     }
 
         .levelup__title {
-
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            font-size: 1.6rem;
+            margin: 0;
+            padding: 1rem 0;
         }
 
-        .levelup__button {
-            min-height: 50px;
+            .levelup__title > span {
+                width: 2em;
+                text-align: center;
+            }
+
+        .levelup__attribute {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+
+            .levelup__label {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-size: 1.6rem;
+                width: 50%;
+                border: var(--border);
+                border-image: var(--border-image);
+                text-transform: uppercase;
+            }
+
+                .levelup__label--text {
+                    width: 3em;
+                }
+
+                .levelup__input {
+                    width: 100%;
+                    font-size: 1.6rem;
+                    border: none;
+                    padding: 0;
+                    text-align: center;
+                }
+            
+            .levelup__button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 50px;
+                min-width: 50px;
+                font-size: 1.6rem;
+                border: var(--border);
+                border-image: var(--border-image);
+            }
+            
+                .button--lower {
+                    background: transparent url(img/ui__icon--alagard-minus.png) no-repeat center / 1.6rem;
+                }
+                
+                .button--raise {
+                    background: transparent url(img/ui__icon--alagard-plus.png) no-repeat center / 1.6rem;
+                }
+
+        .levelup__button--confirm {
+            display: flex;
+            justify-content: center;
+            font-size: 1.6rem;
             min-width: 50px;
-            width: 15rem;
-            padding: 0 1rem;
-            font-size: 1.4rem;
+            width: 50%;
+            min-height: 50px;
+            border: var(--border);
+            border-image: var(--border-image);
             background-color: #fff;
-            border-radius: 1rem;
-            border-width: .5rem;
-            border-color: #ccc;
         }
 
-    .actor {
-        height: 66vh;
-        width: 44vh;
-        border-radius: 2rem;
+    .main__actors {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        
+        width: 240px;
     }
 
-        [data-actor="pc"] {
-            background-color: lightgreen;
+        .actor {
+            height: 96px;
+            width: 96px;
+
+            border: var(--border);
+            border-image: var(--border-image);
         }
 
-        [data-actor="npc"] {
-            background-color: darkred;
-        }
+            [data-actor="pc"] {
+                background-color: lightgreen;
+            }
+
+            [data-actor="npc"] {
+                background-color: darkred;
+            }
 
 /* Footer */
 
@@ -131,4 +281,135 @@ body {
 
 .js-flex {
     display: flex;
+}
+
+@media screen and (min-width: 1920px) {
+    * {}
+    
+    html {
+        font-size: 10px;
+    }
+    
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .header, .footer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        height: 128px;
+        color: white;
+        border: var(--border);
+        border-image: var(--border-image);
+    }
+    
+    .header__attributes, .footer__stats {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 15vw;
+        height: 5vh;
+        padding: 0 .5em;
+        border: .25vw solid gray;
+        border-radius: 10px;
+        color: black;
+        font-size: 1.8rem;
+        background: white url("") no-repeat left center;
+    }
+    
+        .header__attributes > input, .footer__stats > input {
+            width: 80%;
+            height: 3vh;
+            font-size: 1.8rem;
+            color: black;
+            border: none;
+            background-color: inherit;
+        }
+    
+        /* attributes */
+            .attributes--level {
+    
+            }
+    
+            .attributes--health {
+    
+            }
+    
+            .attributes--attack {
+    
+            }
+    
+            .attributes--defence {
+    
+            }
+    
+            .attributes--agility {
+    
+            }
+    
+            .attributes--crit {
+    
+            }
+        /* */
+    
+    /* Main */
+    .main {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        height: calc(100vh - 256px);
+        color: black;
+        background-color: white;
+    }
+    
+        .main__levelup {
+            display: none;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            width: 320px;
+            height: 60%;
+            position: absolute;
+            border: var(--border);
+            border-image: var(--border-image);
+        }
+    
+            .levelup__title {
+    
+            }
+    
+            .levelup__button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 50px;
+                height: auto;
+                min-width: 50px;
+                width: 80%;
+                font-size: 1.4rem;
+                border: var(--border);
+                border-image: var(--border-image);
+                position: absolute;
+            }
+    
+        .actor {
+            height: 80%;
+            width: 20%;
+            border-radius: 2rem;
+        }
+    
+            [data-actor="pc"] {
+                background-color: lightgreen;
+            }
+    
+            [data-actor="npc"] {
+                background-color: darkred;
+            }
 }

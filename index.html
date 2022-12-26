@@ -12,81 +12,138 @@
 
     <body>
         <header class="header">
-            <label class="header__attributes attributes--level">
-                LVL:
-                <input type="text" disabled placeholder="" data-param="level">
+            <label class="header__attributes">
+                <span class="attributes__text">LVL:</span>
+                <input class="attributes__input" type="text" disabled value="9999" data-attribute="level">
             </label>
 
             <label class="header__attributes attributes--health">
-                HP:
-                <input type="text" disabled placeholder="" data-param="health">
+                <span class="attributes__text">CHP:</span>
+                <input class="attributes__input" type="text" disabled value="9999 / 9999" data-attribute="health">
             </label>
 
-            <label class="header__attributes attributes--attack">
-                ATK:
-                <input type="text" disabled placeholder="" data-param="attack">
-            </label>
-
-            <label class="header__attributes attributes--defence">
-                DEF:
-                <input type="text" disabled placeholder="" data-param="defence">
-            </label>
-
-            <label class="header__attributes attributes--agility">
-                AGI:
-                <input type="text" disabled placeholder="" data-param="agility">
-            </label>
-
-            <label class="header__attributes attributes--favor">
-                CRIT:
-                <input type="text" disabled placeholder="" data-param="favor">
+            <label class="header__attributes attributes--crit">
+                <span class="attributes__text">CRIT:</span>
+                <input class="attributes__input" type="text" disabled value="100 / 100" data-attribute="crit">
             </label>
         </header>
 
         <main class="main">
-            <section class="main__levelup" data-levelup="screen">
-                <h1 class="levelup__title">Level-up! Choose an att</h1>
-
-                <button class="levelup__button">raise health</button>
-                <button class="levelup__button">raise attack</button>
-                <button class="levelup__button">raise defence</button>
-                <button class="levelup__button">raise agility</button>
-                <button class="levelup__button">raise critical hit</button>
+            <section class="main__attributes">
+                <label class="attributes__label--main attributes--attack">
+                    <span class="attributes__text">ATK</span>
+                    <input class="attributes__input" type="text" disabled value="9999" data-attribute="attack">
+                </label>
+                
+                <label class="attributes__label--main attributes--defence">
+                    <span class="attributes__text">DEF</span>
+                    <input class="attributes__input" type="text" disabled value="9999" data-attribute="defence">
+                </label>
+                
+                <label class="attributes__label--main attributes--agility">
+                    <span class="attributes__text">AGI</span>
+                    <input class="attributes__input" type="text" disabled value="9999" data-attribute="agility">
+                </label>
             </section>
 
-            <div class="actor" data-actor="pc"></div>
-            <div class="actor" data-actor="npc"></div>
+            <section class="main__levelup" data-levelup="screen">
+                <h1 class="levelup__title">Level-up! Points left: <span data-attribute="currentPoints"></span></h1>
+
+                <section class="levelup__attribute">
+                    <button class="levelup__button button--lower" data-levelup="btn-minus"></button>
+                    
+                    <label class="levelup__label">
+                        <span class="levelup__label--text">mhp:</span>
+                        <input class="levelup__input" type="text" disabled data-levelup="input">
+                    </label>
+                   
+                    <button class="levelup__button button--raise" data-levelup="btn-plus"></button>
+                </section>
+
+                <section class="levelup__attribute">
+                    <button class="levelup__button button--lower" data-levelup="btn-minus"></button>
+                    
+                    <label class="levelup__label">
+                        <span class="levelup__label--text">atk:</span>
+                        <input class="levelup__input" type="text" disabled data-levelup="input">
+                    </label>
+                    
+                    <button class="levelup__button button--raise" data-levelup="btn-plus"></button>
+                </section>
+
+                <section class="levelup__attribute">
+                    <button class="levelup__button button--lower" data-levelup="btn-minus"></button>
+                    
+                    <label class="levelup__label">
+                        <span class="levelup__label--text">def:</span>
+                        <input class="levelup__input" type="text" disabled data-levelup="input">
+                    </label>
+                    
+                    <button class="levelup__button button--raise" data-levelup="btn-plus"></button>
+                </section>
+
+                <section class="levelup__attribute">
+                    <button class="levelup__button button--lower" data-levelup="btn-minus"></button>
+                    
+                    <label class="levelup__label">
+                        <span class="levelup__label--text">agi:</span>
+                        <input class="levelup__input" type="text" disabled data-levelup="input">
+                    </label>
+                    
+                    <button class="levelup__button button--raise" data-levelup="btn-plus"></button>
+                </section>
+
+                <section class="levelup__attribute">
+                    <button class="levelup__button button--lower" data-levelup="btn-minus"></button>
+                    
+                    <label class="levelup__label">
+                        <span class="levelup__label--text">cri:</span>
+                        <input class="levelup__input" type="text" disabled data-levelup="input">
+                    </label>
+                    
+                    <button class="levelup__button button--raise" data-levelup="btn-plus"></button>
+                </section>
+
+                <button class="levelup__button--confirm" data-levelup="confirm">Proceed</button>
+            </section>
+
+            <section class="main__actors">
+                <div class="actor" data-actor="pc"></div>
+                <div class="actor" data-actor="npc"></div>
+            </section>
+
+            <section class="main__attributes">
+                <label class="attributes__label--main attributes--attack">
+                    <span class="attributes__text">ATK</span>
+                    <input class="attributes__input" type="text" disabled value="9999" data-attribute="attack">
+                </label>
+                
+                <label class="attributes__label--main attributes--defence">
+                    <span class="attributes__text">DEF</span>
+                    <input class="attributes__input" type="text" disabled value="9999" data-attribute="defence">
+                </label>
+                
+                <label class="attributes__label--main attributes--agility">
+                    <span class="attributes__text">AGI</span>
+                    <input class="attributes__input" type="text" disabled value="9999" data-attribute="agility">
+                </label>
+            </section>
         </main>
 
         <footer class="footer">
-            <label class="header__attributes attributes--level">
-                LVL:
-                <input type="text" disabled placeholder="" data-param="level">
+            <label class="footer__attributes">
+                <span class="attributes__text">LVL:</span>
+                <input class="attributes__input" type="text" disabled value="9999" data-attribute="level">
             </label>
 
-            <label class="header__attributes attributes--health">
-                HP:
-                <input type="text" disabled placeholder="" data-param="health">
+            <label class="footer__attributes attributes--health">
+                <span class="attributes__text">CHP:</span>
+                <input class="attributes__input" type="text" disabled value="9999 / 9999" data-attribute="health">
             </label>
 
-            <label class="header__attributes attributes--attack">
-                ATK:
-                <input type="text" disabled placeholder="" data-param="attack">
-            </label>
-
-            <label class="header__attributes attributes--defence">
-                DEF:
-                <input type="text" disabled placeholder="" data-param="defence">
-            </label>
-
-            <label class="header__attributes attributes--agility">
-                AGI:
-                <input type="text" disabled placeholder="" data-param="agility">
-            </label>
-
-            <label class="header__attributes attributes--favor">
-                CRIT:
-                <input type="text" disabled placeholder="" data-param="favor">
+            <label class="footer__attributes attributes--crit">
+                <span class="attributes__text">CRIT:</span>
+                <input class="attributes__input" type="text" disabled value="100 / 100" data-attribute="crit">
             </label>
         </footer>
     </body>
