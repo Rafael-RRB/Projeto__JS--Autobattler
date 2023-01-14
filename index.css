@@ -68,6 +68,7 @@ input:disabled {
 }
 
     .attributes__text {
+        padding-left: 1.25rem;
         display: inline-block;
         width: 30%;
         font-size: 1.6rem;
@@ -85,28 +86,32 @@ input:disabled {
     }
 
     /* attributes */
-        .attributes--level {
+        .attributes--level, .attributes--health, .attributes--attack, .attributes--defence, .attributes--agility, .attributes--crit {
+            background: transparent url(./img/ui__icon--placeholder.png) no-repeat left center / 16px;
+        }
 
+        .attributes--level {
+            background-image: url(./img/ui__icon--placeholder.png);
         }
 
         .attributes--health {
-
+            background-image: url(./img/ui__icon--placeholder.png);
         }
 
         .attributes--attack {
-
+            background-image: url(./img/ui__icon--placeholder.png);
         }
 
         .attributes--defence {
-
+            background-image: url(./img/ui__icon--placeholder.png);
         }
 
         .attributes--agility {
-
+            background-image: url(./img/ui__icon--placeholder.png);
         }
 
         .attributes--crit {
-
+            background-image: url(./img/ui__icon--placeholder.png);
         }
     /* */
 
@@ -181,7 +186,6 @@ input:disabled {
             width: 100%;
             font-size: 1.6rem;
             margin: 0;
-            padding: 1rem 0;
         }
 
             .levelup__title > span {
@@ -268,11 +272,15 @@ input:disabled {
         }
 
             [data-actor="pc"] {
+                background: lightgreen url(./img/hero.png) no-repeat center / 72px;
                 background-color: lightgreen;
+                image-rendering: pixelated;
             }
 
             [data-actor="npc"] {
+                background: darkred url(./img/hero.png) no-repeat center / 72px;
                 background-color: darkred;
+                image-rendering: pixelated;
             }
 
 /* Footer */

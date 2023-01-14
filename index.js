@@ -1,11 +1,52 @@
 /* Easy way to disable the entire JavaScript file, for HTML/CSS changes */
-
 //throw Error("JavaScript disabled temporarily for debugging purposes.");
 
+/* Preload */
+// Images
+function preloadImages() {
+    window.arrayImages = [];
+    function pushImage(src) {
+        window.arrayImages.push(new Image());
+        window.arrayImages[window.arrayImages.length - 1].src = src;
+    }
+    pushImage("./img/actor__hero--attack.webp");
+    pushImage("./img/actor__hero--idle.webp");
+    pushImage("./img/actor__hero--hit.webp");
+    pushImage("./img/actor__enemy0--attack.webp");
+    pushImage("./img/actor__enemy0--idle.webp");
+    pushImage("./img/actor__enemy0--hit.webp");
+}
+preloadImages();
+const spritesHero = [window.arrayImages[0], window.arrayImages[1], window.arrayImages[2]];
+const spritesEnemy0 = [window.arrayImages[3], window.arrayImages[4], window.arrayImages[5]];
+
+// Audio
+function preloadAudio() {
+    window.arrayAudios = [];
+    function pushAudio(src) {
+        window.arrayAudios.push(new Audio());
+        window.arrayAudios[window.arrayAudios.length - 1].src = src;
+    }
+    pushAudio("./se/507703__mrthenoronha__hit-3-8-bit.mp3");
+    pushAudio("./se/507706__mrthenoronha__hit-5-8-bit.mp3");
+}
+preloadAudio();
+// Prevent "skipping" the audio from playing
+function playAudio(audio) {
+    audio.pause();
+    audio.currentTime = 0;
+    audio.play();
+}
+
+
 /* Consts */
+// Global
+const timeInterval = 500;
 // Main Screen
 const inputsPlayer = document.querySelectorAll('header [data-attribute], .main__attributes:first-child [data-attribute]');
 const inputsEnemy = document.querySelectorAll('footer [data-attribute], .main__attributes:last-child [data-attribute]');
+const imagePlayer = document.querySelector('[data-actor="pc"]');
+const imageEnemy = document.querySelector('[data-actor="npc"]');
 // Levelup Screen
 const levelupScreen = document.querySelector('[data-levelup="screen"]');
 const levelupInputs = document.querySelectorAll('[data-levelup="input"]');
@@ -127,6 +168,7 @@ function levelCheck() {
         });
         playerActor.level++;
         levelView(1);
+        updateScreen();
     }
     enemyActor = generateEnemy();
     getTurnOrder();
@@ -250,6 +292,7 @@ function combatResult() {
 // Combat Function
 function combat() {
     if(turnOrder === 0) {
+        fightAnimationTurn(1);
         playerActor.curFavor += playerActor.favor;
         // Check if Player critical hit is possible
         if(playerActor.curFavor >= 100) {
@@ -266,6 +309,7 @@ function combat() {
             getCurrentHits(turnOrder);
         }
     } else {
+        fightAnimationTurn(0);
         enemyActor.curFavor += enemyActor.favor;
         // Check if Enemy critical hit is possible
         if(enemyActor.curFavor >= 100) {
@@ -282,8 +326,37 @@ function combat() {
             getCurrentHits(turnOrder);
         }
     }
-    combatResult();
+    setTimeout(combatResult, timeInterval / 2);
+    //combatResult();
 }
+// Changes sprites around
+function fightAnimation(element, spriteArray, index) {
+    element.style.backgroundImage = `url(${spriteArray[index].src})`;
+}
+function fightAnimationTurn(action) {
+    console.log(action);
+    // Resets sprites
+    function resetSprites() {
+        setTimeout(() => {
+            fightAnimation(imagePlayer, spritesHero, 1);
+            fightAnimation(imageEnemy, spritesEnemy0, 1);
+        }, timeInterval / 2);
+    }
+    // If action (true) player is attacking, else enemy is.
+    action === 0 ? (() => {
+        fightAnimation(imagePlayer, spritesHero, 2);
+        fightAnimation(imageEnemy, spritesEnemy0, 0);
+        playAudio(window.arrayAudios[1]);
+        resetSprites();
+    })() : (() => {
+        fightAnimation(imagePlayer, spritesHero, 0);
+        fightAnimation(imageEnemy, spritesEnemy0, 2);
+        resetSprites();
+        playAudio(window.arrayAudios[0]);
+    })();
+}
+
+
 // Update player and enemy attributes (e.g.: HP)
 function updateScreen() {
     switch(true) {
@@ -340,4 +413,4 @@ executeTurn();
 /* FPS list
     60 FPS = 16.67ms
 */
-setInterval(executeTurn, 100);
+setInterval(executeTurn, timeInterval);

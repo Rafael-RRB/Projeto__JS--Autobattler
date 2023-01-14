@@ -1,0 +1,7 @@
+Original sprites:
+Art by Charles Gabriel. Commissioned by OpenGameArt.org (http://opengameart.org)
+link: https://opengameart.org/content/twelve-16x18-rpg-sprites-plus-base
+
+Battler Sprites:
+Art by Charles Gabriel and Clint Bellanger, for OpenGameArt.org (http://opengameart.org)
+link: https://opengameart.org/content/attack-animation-for-16x18-rpg-base-sprites
